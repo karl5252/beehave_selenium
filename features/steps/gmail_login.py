@@ -61,6 +61,6 @@ def step_impl(context):
 
 @then(u'login into mail is successful')
 def step_impl(context):
-
+    time.sleep(5)
     assert context.driver.find_element_by_css_selector("img.gb_tc").is_displayed(), "Missing element"
     context.driver.save_screenshot("google_mail_logged_in.png")
