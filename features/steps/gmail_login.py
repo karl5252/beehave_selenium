@@ -43,12 +43,13 @@ def step_impl(context, username):
 @when(u'click Next')
 def step_impl(context):
     context.driver.find_element_by_xpath("// *[ @ id = 'identifierNext'] / div / button / span").click()
-    #time.sleep(5)
+    # time.sleep(5)
 
 
 @when(u'provide as password "{password}"')
 def step_impl(context, password):
-    password_input = WebDriverWait(context.driver, 10).until(ec.visibility_of_element_located((By.XPATH, "//*[@id='password']/div[1]/div/div[1]/input")))
+    password_input = WebDriverWait(context.driver, 10).until(
+        ec.visibility_of_element_located((By.XPATH, "//*[@id='password']/div[1]/div/div[1]/input")))
 
     assert True, context.driver.find_element_by_xpath("//*[@id='password']/div[1]/div/div[1]/input").is_displayed()
     password_input.send_keys(password)
@@ -62,5 +63,5 @@ def step_impl(context):
 @then(u'login into mail is successful')
 def step_impl(context):
     time.sleep(5)
-    assert context.driver.find_element_by_css_selector("img.gb_tc").is_displayed(), "Missing element"
+    assert context.driver.find_element_by_css_selector("img.gb_tc").is_displayed() == True, "Missing element"
     context.driver.save_screenshot("google_mail_logged_in.png")
